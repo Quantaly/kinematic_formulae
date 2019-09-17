@@ -6240,7 +6240,7 @@ ac:function(){var u,t=this,s=t.b,r=!s.a.a.gcu(),q=t.f
 if(q!==r){t.x.disabled=r
 t.f=r}if(s.a.a.gcu())q="The current answer uses a "+(s.a.a.f?"positive":"negative")+" square root."
 else q="The button is currently disabled because time is known or another formula is being used."
-u="When calculating time from the third or fifth formula, there are two mathematically correct answers. This button will toggle which one is presented. "+q
+u="When calculating time from the third or fifth formula, there are up to two mathematically correct answers. This button will toggle which one is presented. "+q
 q=t.r
 if(q!==u){T.a2(t.x,"title",u)
 t.r=u}},
