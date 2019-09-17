@@ -25,6 +25,11 @@ class Kinematics {
   double get a => constantAcceleration.value;
 
   bool quadformPlus = false;
+  bool get needsQuadform =>
+      displacement.input &&
+      !timeInterval.input &&
+      (initialVelocity.input != finalVelocity.input) &&
+      constantAcceleration.input;
 
   int get numInputs =>
       binInt(displacement.input) +
