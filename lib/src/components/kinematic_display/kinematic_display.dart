@@ -13,6 +13,9 @@ class KinematicDisplayComponent {
   @Input()
   KinematicValue value;
 
+  double get safeValue => value.value == value.value ? value.value : null;
+  set safeValue(double v) => value.value = v ?? 0;
+
   bool get isTimeInterval => value.runtimeType == TimeInterval;
   bool get isAcceleration => value.runtimeType == ConstantAcceleration;
 

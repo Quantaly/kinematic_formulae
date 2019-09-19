@@ -5,7 +5,7 @@
     </div>
     <div>
         <input type="number" step="any" attr.aria-label="{{value.name}}" [disabled]="!value.input"
-            [(ngModel)]="value.value">
+            [(ngModel)]="safeValue">
     </div>
     <div>
         <button *ngIf="isTimeInterval" [disabled]="!value.parent.needsQuadform"
