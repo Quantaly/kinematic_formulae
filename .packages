@@ -63,6 +63,7 @@ quiver:packages/quiver/
 sass:packages/sass/
 sass_builder:packages/sass_builder/
 scratch_space:packages/scratch_space/
+service_worker:packages/service_worker/
 shelf:packages/shelf/
 shelf_packages_handler:packages/shelf_packages_handler/
 shelf_static:packages/shelf_static/

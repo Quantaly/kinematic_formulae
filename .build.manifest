@@ -2,6 +2,7 @@
 favicon.png
 index.html
 main.dart.js
+manifest.json
 packages/$sdk/_internal/ddc_sdk.sum
 packages/$sdk/_internal/strong.sum
 packages/$sdk/dev_compiler/amd/dart_sdk.js
@@ -288,4 +289,6 @@ packages/test/src/runner/browser/static/favicon.ico
 packages/test/src/runner/browser/static/host.css
 packages/test/src/runner/browser/static/host.dart.js
 packages/test/src/runner/browser/static/index.html
+pwa-icon.png
 styles.css
+sw.dart.js
