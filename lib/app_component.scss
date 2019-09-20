@@ -2,13 +2,13 @@
 
 :host {
     display: grid;
-    grid-gap: 20px;
+    gap: 2px 20px;
 
     // mobile
     @media (max-width: 675px) {
         grid-template-areas: 'calculator'
-                             'reference'
-                             'pwa-prompt';
+                             'pwa-prompt'
+                             'reference';
         grid-template-rows: auto
                             auto
                             auto;
@@ -25,8 +25,12 @@
     }
 }
 
-@include class-grid("calculator", "reference", "pwa-prompt");
+@include class-grid("calculator", "pwa-prompt", "reference");
 
 .notice {
     margin-top: 1.5em;
+}
+
+.pwa-prompt {
+    margin-top: 10px;
 }

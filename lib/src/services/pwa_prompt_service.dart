@@ -6,7 +6,7 @@ class PwaPromptService {
   Stream<BeforeInstallPromptEvent> get prompt =>
       window.on["beforeinstallprompt"].cast();
 
-  bool _dismissedCache = window.localStorage[dismissedKey] != null;
+  bool _dismissedCache = window.localStorage.containsKey(dismissedKey);
   bool get dismissed => _dismissedCache;
   set dismissed(bool value) {
     _dismissedCache = value;
