@@ -251,7 +251,7 @@ md:function(a){return function($expr$){try{$expr$.$method$}catch(u){return u.mes
 m9:function(a,b){return new H.hV(a,b==null?null:b.method)},
 l2:function(a,b){var u=b==null,t=u?null:b.method
 return new H.hf(a,t,u?null:b.receiver)},
-a0:function(a){var u,t,s,r,q,p,o,n,m,l,k,j,i,h,g=null,f=new H.kH(a)
+a1:function(a){var u,t,s,r,q,p,o,n,m,l,k,j,i,h,g=null,f=new H.kH(a)
 if(a==null)return
 if(typeof a!=="object")return a
 if("dartException" in a)return f.$1(a.dartException)
@@ -953,7 +953,7 @@ u.d7(a,b)
 return u},
 mh:function(a,b){var u,t,s
 b.a=1
-try{a.bB(0,new P.js(b),new P.jt(b),null)}catch(s){u=H.a0(s)
+try{a.bB(0,new P.js(b),new P.jt(b),null)}catch(s){u=H.a1(s)
 t=H.aD(s)
 P.kD(new P.ju(b,u,t))}},
 jr:function(a,b){var u,t
@@ -1167,7 +1167,7 @@ _.c=c
 _.d=d},
 aS:function aS(a,b){this.a=a
 this.$ti=b},
-a1:function a1(a,b,c,d){var _=this
+a2:function a2(a,b,c,d){var _=this
 _.dx=0
 _.fr=_.dy=null
 _.x=a
@@ -1650,7 +1650,7 @@ return u},
 d1:function(a){var u,t,s,r="element tag unavailable"
 try{u=J.aa(a)
 t=u.gcH(a)
-if(typeof t==="string")r=u.gcH(a)}catch(s){H.a0(s)}return r},
+if(typeof t==="string")r=u.gcH(a)}catch(s){H.a1(s)}return r},
 jH:function(a,b){a=536870911&a+b
 a=536870911&a+((524287&a)<<10)
 return a^a>>>6},
@@ -2215,7 +2215,7 @@ hJ:function hJ(a){this.a=a},
 e6:function e6(){}},T={fd:function fd(){},di:function di(){},
 mV:function(a,b,c){a.classList.add(b)},
 pH:function(a,b,c){J.nk(a).l(0,b)},
-a2:function(a,b,c){a.setAttribute(b,c)},
+a0:function(a,b,c){a.setAttribute(b,c)},
 p1:function(a){return document.createTextNode(a)},
 T:function(a,b){return H.c(a.appendChild(T.p1(b)),"$ibF")},
 my:function(a){var u=document
@@ -2953,15 +2953,15 @@ $C:"$0",
 $R:0,
 $S:0}
 P.aS.prototype={}
-P.a1.prototype={
+P.a2.prototype={
 bg:function(){},
 bh:function(){},
-saq:function(a){this.dy=H.r(a,"$ia1",this.$ti,"$aa1")},
-saJ:function(a){this.fr=H.r(a,"$ia1",this.$ti,"$aa1")}}
+saq:function(a){this.dy=H.r(a,"$ia2",this.$ti,"$aa2")},
+saJ:function(a){this.fr=H.r(a,"$ia2",this.$ti,"$aa2")}}
 P.cv.prototype={
 gbb:function(){return this.c<4},
 c2:function(a){var u,t
-H.r(a,"$ia1",this.$ti,"$aa1")
+H.r(a,"$ia2",this.$ti,"$aa2")
 u=a.fr
 t=a.dy
 if(u==null)this.sbW(t)
@@ -2979,11 +2979,11 @@ o.ef()
 return o}u=$.H
 t=d?1:0
 s=p.$ti
-r=new P.a1(p,u,t,s)
+r=new P.a2(p,u,t,s)
 r.d1(a,b,c,d,o)
 r.saJ(r)
 r.saq(r)
-H.r(r,"$ia1",s,"$aa1")
+H.r(r,"$ia2",s,"$aa2")
 r.dx=p.c&1
 q=p.e
 p.sbZ(r)
@@ -2994,7 +2994,7 @@ else q.saq(r)
 if(p.d==p.e)P.mu(p.a)
 return r},
 e2:function(a){var u=this,t=u.$ti
-a=H.r(H.r(a,"$ia_",t,"$aa_"),"$ia1",t,"$aa1")
+a=H.r(H.r(a,"$ia_",t,"$aa_"),"$ia2",t,"$aa2")
 if(a.dy===a)return
 t=a.dx
 if((t&2)!==0)a.dx=t|4
@@ -3025,8 +3025,8 @@ t=r}else t=t.dy}q.c&=4294967293
 if(q.d==null)q.b3()},
 b3:function(){if((this.c&4)!==0&&null.gfc())null.bO(null)
 P.mu(this.b)},
-sbW:function(a){this.d=H.r(a,"$ia1",this.$ti,"$aa1")},
-sbZ:function(a){this.e=H.r(a,"$ia1",this.$ti,"$aa1")},
+sbW:function(a){this.d=H.r(a,"$ia2",this.$ti,"$aa2")},
+sbZ:function(a){this.e=H.r(a,"$ia2",this.$ti,"$aa2")},
 $ipR:1,
 $iq7:1,
 $ibI:1}
@@ -3192,7 +3192,7 @@ $S:0}
 P.jz.prototype={
 $0:function(){var u,t,s,r,q,p,o=this,n=null
 try{s=o.c
-n=s.b.b.O(H.d(s.d,{func:1}),null)}catch(r){u=H.a0(r)
+n=s.b.b.O(H.d(s.d,{func:1}),null)}catch(r){u=H.a1(r)
 t=H.aD(r)
 if(o.d){s=H.c(o.a.a.c,"$iW").a
 q=u
@@ -3218,7 +3218,7 @@ try{s=n.b
 r=H.k(s,0)
 q=H.n(n.c,r)
 p=H.k(s,1)
-n.a.b=s.b.b.ag(H.d(s.d,{func:1,ret:{futureOr:1,type:p},args:[r]}),q,{futureOr:1,type:p},r)}catch(o){u=H.a0(o)
+n.a.b=s.b.b.ag(H.d(s.d,{func:1,ret:{futureOr:1,type:p},args:[r]}),q,{futureOr:1,type:p},r)}catch(o){u=H.a1(o)
 t=H.aD(o)
 s=n.a
 s.b=new P.W(u,t)
@@ -3230,7 +3230,7 @@ try{u=H.c(m.a.a.c,"$iW")
 r=m.c
 if(H.M(r.eO(u))&&r.e!=null){q=m.b
 q.b=r.eI(u)
-q.a=!1}}catch(p){t=H.a0(p)
+q.a=!1}}catch(p){t=H.a1(p)
 s=H.aD(p)
 r=H.c(m.a.a.c,"$iW")
 q=r.a
@@ -3387,13 +3387,13 @@ return this.cy=new P.eB(this)},
 ga_:function(){return this.cx.a},
 a4:function(a){var u,t,s
 H.d(a,{func:1,ret:-1})
-try{this.O(a,-1)}catch(s){u=H.a0(s)
+try{this.O(a,-1)}catch(s){u=H.a1(s)
 t=H.aD(s)
 this.ad(u,t)}},
 aY:function(a,b,c){var u,t,s
 H.d(a,{func:1,ret:-1,args:[c]})
 H.n(b,c)
-try{this.ag(a,b,-1,c)}catch(s){u=H.a0(s)
+try{this.ag(a,b,-1,c)}catch(s){u=H.a1(s)
 t=H.aD(s)
 this.ad(u,t)}},
 bl:function(a,b){return new P.jf(this,this.aA(H.d(a,{func:1,ret:b}),b),b)},
@@ -3541,14 +3541,14 @@ ga_:function(){return this},
 a4:function(a){var u,t,s,r=null
 H.d(a,{func:1,ret:-1})
 try{if(C.b===$.H){a.$0()
-return}P.kg(r,r,this,a,-1)}catch(s){u=H.a0(s)
+return}P.kg(r,r,this,a,-1)}catch(s){u=H.a1(s)
 t=H.aD(s)
 P.ke(r,r,this,u,H.c(t,"$iF"))}},
 aY:function(a,b,c){var u,t,s,r=null
 H.d(a,{func:1,ret:-1,args:[c]})
 H.n(b,c)
 try{if(C.b===$.H){a.$1(b)
-return}P.kh(r,r,this,a,b,-1,c)}catch(s){u=H.a0(s)
+return}P.kh(r,r,this,a,b,-1,c)}catch(s){u=H.a1(s)
 t=H.aD(s)
 P.ke(r,r,this,u,H.c(t,"$iF"))}},
 bl:function(a,b){return new P.jP(this,H.d(a,{func:1,ret:b}),b)},
@@ -4318,7 +4318,7 @@ aX:function(a){var u=a.parentNode
 if(u!=null)u.removeChild(a)},
 eU:function(a,b){var u,t
 try{u=a.parentNode
-J.nf(u,b,a)}catch(t){H.a0(t)}return a},
+J.nf(u,b,a)}catch(t){H.a1(t)}return a},
 bQ:function(a){var u
 for(;u=a.firstChild,u!=null;)a.removeChild(u)},
 k:function(a){var u=a.nodeValue
@@ -4768,9 +4768,9 @@ var l=0
 if(c.children)l=c.children.length
 for(var k=0;k<l;k++){var j=c.children[k]
 if(j.id=='attributes'||j.name=='attributes'||j.id=='lastChild'||j.name=='lastChild'||j.id=='children'||j.name=='children')return true}return false}(a)
-p=H.M(u)?!0:!(a.attributes instanceof NamedNodeMap)}catch(r){H.a0(r)}t="element unprintable"
-try{t=J.bS(a)}catch(r){H.a0(r)}try{s=W.d1(a)
-this.ed(H.c(a,"$iL"),b,p,t,s,H.c(o,"$iG"),H.D(n))}catch(r){if(H.a0(r) instanceof P.ap)throw r
+p=H.M(u)?!0:!(a.attributes instanceof NamedNodeMap)}catch(r){H.a1(r)}t="element unprintable"
+try{t=J.bS(a)}catch(r){H.a1(r)}try{s=W.d1(a)
+this.ed(H.c(a,"$iL"),b,p,t,s,H.c(o,"$iG"),H.D(n))}catch(r){if(H.a1(r) instanceof P.ap)throw r
 else{this.ar(a,b)
 window
 q="Removing corrupted element "+H.j(t)
@@ -4807,7 +4807,7 @@ break
 case 8:case 11:case 3:case 4:break
 default:p.ar(a,b)}u=a.lastChild
 for(p=a==null;null!=u;){t=null
-try{t=u.previousSibling}catch(s){H.a0(s)
+try{t=u.previousSibling}catch(s){H.a1(s)
 r=H.c(u,"$iz")
 if(p){q=r.parentNode
 if(q!=null)q.removeChild(r)}else a.removeChild(r)
@@ -5031,7 +5031,7 @@ try{u=null
 if(m!=null)u=this.bY(a,b,m)
 else u=this.dP(a,b)
 r=P.ol(H.c(u,"$ibA"),null)
-return r}catch(q){t=H.a0(q)
+return r}catch(q){t=H.a1(q)
 s=H.aD(q)
 p=t
 o=s
@@ -5338,7 +5338,7 @@ M.cT.prototype={
 cJ:function(){var u,t,s,r,q=this
 try{$.fn=q
 q.d=!0
-q.e9()}catch(s){u=H.a0(s)
+q.e9()}catch(s){u=H.a1(s)
 t=H.aD(s)
 if(!q.ea()){r=H.c(t,"$iF")
 q.Q.toString
@@ -5387,7 +5387,7 @@ n.a.a=r
 if(!!J.N(r).$ia3){q=n.e
 u=H.n(r,[P.a3,q])
 p=n.d
-J.no(u,new M.fo(p,q),new M.fp(n.b,p),null)}}catch(o){t=H.a0(o)
+J.no(u,new M.fo(p,q),new M.fp(n.b,p),null)}}catch(o){t=H.a1(o)
 s=H.aD(o)
 q=H.c(s,"$iF")
 n.b.Q.toString
@@ -5465,7 +5465,7 @@ else this.ac()
 if(t.Q===1){t.Q=2
 t.ch=!0}t.scc(1)},
 eD:function(){var u,t,s,r
-try{this.ac()}catch(s){u=H.a0(s)
+try{this.ac()}catch(s){u=H.a1(s)
 t=H.aD(s)
 r=$.fn
 r.sba(this)
@@ -6071,10 +6071,10 @@ T.T(m,"Formulas")
 t=H.c(T.Y(b6,n,"ul"),"$iq")
 a8.F(t)
 l=T.Y(b6,t,a9)
-T.a2(l,b0,"v equals v zero plus a t")
+T.a0(l,b0,"v equals v zero plus a t")
 a8.u(l)
 k=T.cL(b6,l)
-T.a2(k,b1,b2)
+T.a0(k,b1,b2)
 a8.u(k)
 T.T(k,"v = v")
 j=T.Y(b6,k,b3)
@@ -6082,10 +6082,10 @@ a8.u(j)
 T.T(j,"0")
 T.T(k," + at")
 i=T.Y(b6,t,a9)
-T.a2(i,b0,"delta x equals quantity v plus v zero divided by two times t")
+T.a0(i,b0,"delta x equals quantity v plus v zero divided by two times t")
 a8.u(i)
 h=T.cL(b6,i)
-T.a2(h,b1,b2)
+T.a0(h,b1,b2)
 a8.u(h)
 T.T(h,"\u0394x = ((v + v")
 g=T.Y(b6,h,b3)
@@ -6093,10 +6093,10 @@ a8.u(g)
 T.T(g,"0")
 T.T(h,") / 2)t")
 f=T.Y(b6,t,a9)
-T.a2(f,b0,"delta x equals v zero t plus one half a t squared")
+T.a0(f,b0,"delta x equals v zero t plus one half a t squared")
 a8.u(f)
 e=T.cL(b6,f)
-T.a2(e,b1,b2)
+T.a0(e,b1,b2)
 a8.u(e)
 T.T(e,"\u0394x = v")
 d=T.Y(b6,e,b3)
@@ -6107,10 +6107,10 @@ c=T.Y(b6,e,b4)
 a8.u(c)
 T.T(c,"2")
 b=T.Y(b6,t,a9)
-T.a2(b,b0,"v squared equals v zero squared plus two A delta x")
+T.a0(b,b0,"v squared equals v zero squared plus two A delta x")
 a8.u(b)
 a=T.cL(b6,b)
-T.a2(a,b1,b2)
+T.a0(a,b1,b2)
 a8.u(a)
 T.T(a,"v")
 a0=T.Y(b6,a,b4)
@@ -6125,10 +6125,10 @@ a8.u(a2)
 T.T(a2,"2")
 T.T(a," + 2a\u0394x")
 a3=T.Y(b6,t,a9)
-T.a2(a3,b0,"delta x equals v t minus one half a t squared")
+T.a0(a3,b0,"delta x equals v t minus one half a t squared")
 a8.u(a3)
 a4=T.cL(b6,a3)
-T.a2(a4,b1,b2)
+T.a0(a4,b1,b2)
 a8.u(a4)
 T.T(a4,"\u0394x = vt - (1/2)at")
 a5=T.Y(b6,a4,b4)
@@ -6137,7 +6137,8 @@ T.T(a5,"2")
 a6=T.Y(b6,n,"p")
 a8.u(a6)
 a7=T.Y(b6,a6,"a")
-T.a2(a7,"href","https://www.khanacademy.org/science/physics/one-dimensional-motion/kinematic-formulas/a/what-are-the-kinematic-formulas")
+T.a0(a7,"href","https://www.khanacademy.org/science/physics/one-dimensional-motion/kinematic-formulas/a/what-are-the-kinematic-formulas")
+T.a0(a7,"target","_blank")
 H.c(a7,"$iq")
 a8.F(a7)
 T.T(a7,"Khan Academy")
@@ -6205,12 +6206,12 @@ u=T.cK(j,i)
 n.F(u)
 t=T.cL(j,u)
 n.fx=t
-T.a2(t,"aria-hidden","true")
+T.a0(t,"aria-hidden","true")
 n.u(n.fx)
 T.T(u," ")
 t=H.c(T.Y(j,u,l),"$ib9")
 n.fy=t
-T.a2(t,"type","checkbox")
+T.a0(t,"type","checkbox")
 n.F(n.fy)
 t=new N.bX(n.fy,new L.bW(P.E),new L.cq())
 n.f=t
@@ -6221,8 +6222,8 @@ r=T.cK(j,i)
 n.F(r)
 t=H.c(T.Y(j,r,l),"$ib9")
 n.go=t
-T.a2(t,"step","any")
-T.a2(n.go,"type","number")
+T.a0(t,"step","any")
+T.a0(n.go,"type","number")
 n.F(n.go)
 t=n.go
 q=new O.c1(t,new L.bW(P.e),new L.cq())
@@ -6273,14 +6274,14 @@ n.db=r}u=l.a
 u=u.ga2(u)
 q=u+" is known"
 u=n.dx
-if(u!==q){T.a2(n.fy,m,q)
+if(u!==q){T.a0(n.fy,m,q)
 n.dx=q}p=!H.M(l.a.b)
 u=n.dy
 if(u!==p){n.go.disabled=p
 n.dy=p}u=l.a
 o=u.ga2(u)
 u=n.fr
-if(u!==o){T.a2(n.go,m,o)
+if(u!==o){T.a0(n.go,m,o)
 n.fr=o}},
 aS:function(){this.cx.cf()},
 dM:function(a){this.b.a.b=H.aV(a)},
@@ -6316,7 +6317,7 @@ t.f=r}if(s.a.a.gcu())q="The current answer uses a "+(s.a.a.f?"positive":"negativ
 else q="The button is currently disabled because time is known or another formula is being used."
 u="When calculating time from the third or fifth formula, there are up to two mathematically correct answers. This button will toggle which one is presented. "+q
 q=t.r
-if(q!==u){T.a2(t.x,"title",u)
+if(q!==u){T.a0(t.x,"title",u)
 t.r=u}},
 dI:function(a){var u=this.b.a.a
 u.f=!u.f},
@@ -6341,7 +6342,7 @@ gj:function(a){var u,t,s=this
 if(H.M(s.b))return s.c
 if(s.a.gcA()!==3)return 0/0
 try{u=s.an()
-return u}catch(t){if(!!J.N(H.a0(t)).$ibw)return 0/0
+return u}catch(t){if(!!J.N(H.a1(t)).$ibw)return 0/0
 else throw t}}}
 S.fH.prototype={
 an:function(){var u,t,s=this.a
@@ -6695,7 +6696,7 @@ s(P.it,[P.jW,W.lu])
 t(P.dG,P.jW)
 t(P.aS,P.dG)
 t(P.jb,P.bi)
-t(P.a1,P.jb)
+t(P.a2,P.jb)
 s(P.cv,[P.k1,P.j4])
 s(P.dF,[P.bh,P.k3])
 t(P.dK,P.dL)
