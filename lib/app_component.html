@@ -1,4 +1,4 @@
-<div>
+<div class="calculator">
     <h1>Kinematics</h1>
 
     <kn-display [value]="kinematics.displacement"></kn-display>
@@ -10,7 +10,7 @@
     <div class="notice" *ngIf="kinematics.numInputs != 3">Select exactly 3 known values.</div>
 </div>
 
-<div>
+<div class="reference">
     <h2>Formulas</h2>
 
     <ul>
@@ -32,4 +32,8 @@
             Khan Academy
         </a>
     </p>
+</div>
+
+<div class="pwa-prompt">
+    <kn-pwa-prompt></kn-pwa-prompt>
 </div>

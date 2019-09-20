@@ -1,0 +1,8 @@
+// https://gist.github.com/Quantaly/222f1dabb3489504493a64d102446d0e
+@mixin class-grid($classes...) {
+    @each $class in $classes {
+        .#{$class} {
+            grid-area: #{$class};
+        }
+    }
+}

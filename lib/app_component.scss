@@ -1,17 +1,31 @@
+@import "shared";
+
 :host {
     display: grid;
     grid-gap: 20px;
 
+    // mobile
     @media (max-width: 675px) {
-        grid-template-rows: auto auto;
+        grid-template-areas: 'calculator'
+                             'reference'
+                             'pwa-prompt';
+        grid-template-rows: auto
+                            auto
+                            auto;
         grid-template-columns: auto;
     }
 
+    // desktop
     @media (min-width: 676px) {
-        grid-template-rows: auto;
+        grid-template-areas: 'calculator reference'
+                             'calculator pwa-prompt';
+        grid-template-rows: auto
+                            auto;
         grid-template-columns: auto auto;
     }
 }
+
+@include class-grid("calculator", "reference", "pwa-prompt");
 
 .notice {
     margin-top: 1.5em;
