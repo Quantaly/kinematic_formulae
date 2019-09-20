@@ -1,6 +1,6 @@
 import 'package:service_worker/worker.dart' as w;
 
-const cacheName = "appCahce";
+const cacheName = "kn-cache-v2";
 
 const cacheResources = [
   // page data
@@ -24,7 +24,7 @@ const cacheResources = [
 
 void main() {
   w.onInstall.listen((evt) async {
-    print("ServiceWorker installed");
+    //print("ServiceWorker installed");
 
     evt.waitUntil(() async {
       try {
@@ -40,13 +40,23 @@ void main() {
   });
 
   w.onActivate.listen((evt) {
-    print("ServiceWorker activated");
+    //print("ServiceWorker activated");
+
+    evt.waitUntil(() async {
+      var futures = <Future>[];
+      for (var cache in await w.caches.keys()) {
+        if (cache != cacheName) {
+          futures.add(w.caches.delete(cache));
+        }
+      }
+      await Future.wait(futures);
+    }());
   });
 
   w.onFetch.listen((evt) {
     evt.respondWith(w.caches.match(evt.request).then((res) {
-      print(evt.request.url);
-      print("res is $res");
+      //print(evt.request.url);
+      //print("res is $res");
       return res ?? w.fetch(evt.request);
     }));
   });
