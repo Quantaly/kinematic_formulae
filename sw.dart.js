@@ -3188,7 +3188,7 @@ var $async$$0=P.hm(function(a,b){if(a===1){r=b
 u=s}while(true)switch(u){case 0:s=3
 n=$.ak()
 u=6
-return P.f3(n.ga2(n).bb(0,"kn-cache-v3"),$async$$0)
+return P.f3(n.ga2(n).bb(0,"kn-cache-v4"),$async$$0)
 case 6:p=b
 n=p.a
 m=H.l(C.i,0)
@@ -3226,7 +3226,7 @@ return P.f3(s.ga2(s).b5(0),$async$$0)
 case 2:m,s=l.cx(b),r=P.av
 case 3:if(!s.p()){u=4
 break}q=s.gq(s)
-if(q!=="kn-cache-v3"){p=$.ak()
+if(q!=="kn-cache-v4"){p=$.ak()
 o=p.b
 p=(o==null?p.b=new L.bl(H.az(p.a.caches,null)):o).a
 C.a.m(n,V.bg(H.bf(p.delete.apply(p,[q]),"$iU"),null,null,r))}u=3
