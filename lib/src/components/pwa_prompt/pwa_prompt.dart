@@ -25,6 +25,7 @@ class PwaPrompt implements OnInit, OnDestroy {
       evt.preventDefault();
       if (!_service.dismissed) {
         event = evt;
+        evt.userChoice.then((_) => event = null);
       }
     });
   }
