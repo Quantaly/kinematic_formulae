@@ -3476,7 +3476,7 @@ C.p=function(hooks) {
 C.f=function(hooks) { return hooks; }
 
 C.b=new P.eN()
-C.i=H.M(u([".","index.html","styles.css","main.dart.js","favicon.png"]),[P.j])
+C.i=H.M(u([".","index.html","styles.css","main.dart.js","manifest.json","icons/favicon.png","icons/pwa-icon-192.png","icons/pwa-icon-512.png","icons/pwa-icon-ios.png","https://fonts.googleapis.com/css?family=Arimo&display=fallback","https://fonts.gstatic.com/s/arimo/v13/P5sMzZCDf9_T_10ZxCE.woff2","https://fonts.gstatic.com/s/arimo/v13/P5sMzZCDf9_T_10axCF8jA.woff2"]),[P.j])
 C.j=u([])
 C.w=H.M(u([]),[P.a7])
 C.k=new H.cS(0,{},C.w,[P.a7,null])

@@ -1,5 +1,8 @@
 .packages
-favicon.png
+icons/favicon.png
+icons/pwa-icon-192.png
+icons/pwa-icon-512.png
+icons/pwa-icon-ios.png
 index.html
 main.dart.js
 manifest.json
@@ -289,6 +292,5 @@ packages/test/src/runner/browser/static/favicon.ico
 packages/test/src/runner/browser/static/host.css
 packages/test/src/runner/browser/static/host.dart.js
 packages/test/src/runner/browser/static/index.html
-pwa-icon.png
 styles.css
 sw.dart.js
