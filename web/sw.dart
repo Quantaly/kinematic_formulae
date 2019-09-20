@@ -8,6 +8,11 @@ const cacheResources = [
   "styles.css",
   "main.dart.js",
   "favicon.png",
+  "manifest.json",
+  "pwa-icon.png",
+  "https://fonts.googleapis.com/css?family=Arimo&display=fallback",
+  "https://fonts.gstatic.com/s/arimo/v13/P5sMzZCDf9_T_10ZxCE.woff2",
+  "https://fonts.gstatic.com/s/arimo/v13/P5sMzZCDf9_T_10axCF8jA.woff2",
 ];
 
 void main() {
@@ -32,11 +37,10 @@ void main() {
   });
 
   w.onFetch.listen((evt) {
-    evt.respondWith(
-        w.caches.match(evt.request).then((res) {
-          print(evt.request.url);
-          print("res is $res");
-          return res ?? w.fetch(evt.request);
-        }));
+    evt.respondWith(w.caches.match(evt.request).then((res) {
+      print(evt.request.url);
+      print("res is $res");
+      return res ?? w.fetch(evt.request);
+    }));
   });
 }
