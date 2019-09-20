@@ -3,7 +3,12 @@
     "name": "Kinematic Formulae",
     "icons": [
         {
-            "src": "pwa-icon.png",
+            "src": "icons/pwa-icon-192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "icons/pwa-icon-512.png",
             "type": "image/png",
             "sizes": "512x512"
         }

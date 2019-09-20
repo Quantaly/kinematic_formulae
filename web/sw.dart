@@ -3,13 +3,20 @@ import 'package:service_worker/worker.dart' as w;
 const cacheName = "appCahce";
 
 const cacheResources = [
+  // page data
   ".",
   "index.html",
   "styles.css",
   "main.dart.js",
-  "favicon.png",
   "manifest.json",
-  "pwa-icon.png",
+
+  // icons
+  "icons/favicon.png",
+  "icons/pwa-icon-192.png",
+  "icons/pwa-icon-512.png",
+  "icons/pwa-icon-ios.png",
+
+  // fonts
   "https://fonts.googleapis.com/css?family=Arimo&display=fallback",
   "https://fonts.gstatic.com/s/arimo/v13/P5sMzZCDf9_T_10ZxCE.woff2",
   "https://fonts.gstatic.com/s/arimo/v13/P5sMzZCDf9_T_10axCF8jA.woff2",
