@@ -31,18 +31,32 @@ class Kinematics {
       (initialVelocity.input != finalVelocity.input) &&
       constantAcceleration.input;
 
-  int get numInputs =>
-      binInt(displacement.input) +
-      binInt(timeInterval.input) +
-      binInt(initialVelocity.input) +
-      binInt(finalVelocity.input) +
-      binInt(constantAcceleration.input);
+  List<KinematicValue> get inputs => [
+        if (displacement.input) displacement,
+        if (timeInterval.input) timeInterval,
+        if (initialVelocity.input) initialVelocity,
+        if (finalVelocity.input) finalVelocity,
+        if (constantAcceleration.input) constantAcceleration,
+      ];
+
+  List<KinematicValue> get calculating => [
+        if (!displacement.input) displacement,
+        if (!timeInterval.input) timeInterval,
+        if (!initialVelocity.input) initialVelocity,
+        if (!finalVelocity.input) finalVelocity,
+        if (!constantAcceleration.input) constantAcceleration,
+      ];
+
+  int get numInputs => inputs.length;
 }
+
+final nameRegex = RegExp("(.*) \\(.*\\)");
 
 abstract class KinematicValue {
   final Kinematics parent;
   String get name;
-  String get simpleName => name;
+  String get plaintextName => name;
+  String get simpleName => nameRegex.firstMatch(name).group(1);
 
   bool input = false;
 
@@ -52,9 +66,19 @@ abstract class KinematicValue {
     if (input) return _value;
     if (parent.numInputs != 3) return double.nan;
     try {
-      return _calcValue();
+      return _calculate().value();
     } on NoSuchMethodError {
       return double.nan;
+    }
+  }
+
+  int get using {
+    if (input) return -1;
+    if (parent.numInputs != 3) return -1;
+    try {
+      return _calculate().using;
+    } on NoSuchMethodError {
+      return -1;
     }
   }
 
@@ -64,9 +88,15 @@ abstract class KinematicValue {
   double get v => parent.v;
   double get a => parent.a;
 
-  double _calcValue();
+  CalcResult _calculate();
 
   KinematicValue._(this.parent);
+}
+
+class CalcResult {
+  final double Function() value;
+  final int using;
+  CalcResult(this.value, this.using);
 }
 
 /*
@@ -88,17 +118,17 @@ class Displacement extends KinematicValue {
   final name = "Displacement (Δx)";
 
   @override
-  double _calcValue() {
+  CalcResult _calculate() {
     if (!parent.timeInterval.input) {
-      return dxFrom4(v, v0, a);
+      return CalcResult(() => dxFrom4(v, v0, a), 4);
     } else if (!parent.initialVelocity.input) {
-      return dxFrom5(v, t, a);
+      return CalcResult(() => dxFrom5(v, t, a), 5);
     } else if (!parent.finalVelocity.input) {
-      return dxFrom3(v0, t, a);
+      return CalcResult(() => dxFrom3(v0, t, a), 3);
     } else if (!parent.constantAcceleration.input) {
-      return dxFrom2(v, v0, t);
+      return CalcResult(() => dxFrom2(v, v0, t), 2);
     }
-    return double.nan; // should never get here
+    return null; // should never get here
   }
 }
 
@@ -109,17 +139,19 @@ class TimeInterval extends KinematicValue {
   final name = "Time Interval (t)";
 
   @override
-  double _calcValue() {
+  CalcResult _calculate() {
     if (!parent.displacement.input) {
-      return tFrom1(v, v0, a);
+      return CalcResult(() => tFrom1(v, v0, a), 1);
     } else if (!parent.initialVelocity.input) {
-      return tFrom5(dx, v, a, quadformPlus: parent.quadformPlus);
+      return CalcResult(
+          () => tFrom5(dx, v, a, quadformPlus: parent.quadformPlus), 5);
     } else if (!parent.finalVelocity.input) {
-      return tFrom3(dx, v0, a, quadformPlus: parent.quadformPlus);
+      return CalcResult(
+          () => tFrom3(dx, v0, a, quadformPlus: parent.quadformPlus), 3);
     } else if (!parent.constantAcceleration.input) {
-      return tFrom2(dx, v, v0);
+      return CalcResult(() => tFrom2(dx, v, v0), 2);
     }
-    return double.nan; // should never get here
+    return null; // should never get here
   }
 }
 
@@ -129,20 +161,20 @@ class InitialVelocity extends KinematicValue {
   @override
   final name = "Initial Velocity (v<sub>0</sub>)";
   @override
-  final simpleName = "Initial Velocity (v0)";
+  final plaintextName = "Initial Velocity (v0)";
 
   @override
-  double _calcValue() {
+  CalcResult _calculate() {
     if (!parent.displacement.input) {
-      return v0From1(v, a, t);
+      return CalcResult(() => v0From1(v, a, t), 1);
     } else if (!parent.timeInterval.input) {
-      return v0From4(v, a, dx);
+      return CalcResult(() => v0From4(v, a, dx), 4);
     } else if (!parent.finalVelocity.input) {
-      return v0From3(dx, t, a);
+      return CalcResult(() => v0From3(dx, t, a), 3);
     } else if (!parent.constantAcceleration.input) {
-      return v0From2(dx, v, t);
+      return CalcResult(() => v0From2(dx, v, t), 2);
     }
-    return double.nan; // should never get here
+    return null; // should never get here
   }
 }
 
@@ -153,17 +185,17 @@ class FinalVelocity extends KinematicValue {
   final name = "Final Velocity (v)";
 
   @override
-  double _calcValue() {
+  CalcResult _calculate() {
     if (!parent.displacement.input) {
-      return vFrom1(v0, a, t);
+      return CalcResult(() => vFrom1(v0, a, t), 1);
     } else if (!parent.timeInterval.input) {
-      return vFrom4(v0, a, dx);
+      return CalcResult(() => vFrom4(v0, a, dx), 4);
     } else if (!parent.initialVelocity.input) {
-      return vFrom5(dx, t, a);
+      return CalcResult(() => vFrom5(dx, t, a), 5);
     } else if (!parent.constantAcceleration.input) {
-      return vFrom2(dx, v0, t);
+      return CalcResult(() => vFrom2(dx, v0, t), 2);
     }
-    return double.nan; // should never get here
+    return null; // should never get here
   }
 }
 
@@ -174,16 +206,16 @@ class ConstantAcceleration extends KinematicValue {
   final name = "Acceleration (a)";
 
   @override
-  double _calcValue() {
+  CalcResult _calculate() {
     if (!parent.displacement.input) {
-      return aFrom1(v, v0, t);
+      return CalcResult(() => aFrom1(v, v0, t), 1);
     } else if (!parent.timeInterval.input) {
-      return aFrom4(v, v0, dx);
+      return CalcResult(() => aFrom4(v, v0, dx), 4);
     } else if (!parent.initialVelocity.input) {
-      return aFrom5(dx, v, t);
+      return CalcResult(() => aFrom5(dx, v, t), 5);
     } else if (!parent.finalVelocity.input) {
-      return aFrom3(dx, v0, t);
+      return CalcResult(() => aFrom3(dx, v0, t), 3);
     }
-    return double.nan; // should never get here
+    return null; // should never get here
   }
 }

@@ -1,7 +1,5 @@
 import 'dart:math' as math;
 
-int binInt(bool bin) => bin ? 1 : 0;
-
 /*
 1) v = v0 + at
 
