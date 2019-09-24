@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 
@@ -27,4 +29,11 @@ class KinematicDisplayComponent {
           "${value.parent.quadformPlus ? "positive" : "negative"} square root."
       : "The button is currently disabled because time is known or another "
           "formula is being used.";
+
+  void quadformHint() {
+    window.alert("When calculating time from the third or fifth formula, "
+        "there are up to two mathematically correct answers. "
+        "This button will toggle which one is presented."
+        "$quadformAddendum");
+  }
 }
