@@ -33,7 +33,7 @@ class KinematicDisplayComponent {
   void quadformHint() {
     window.alert("When calculating time from the third or fifth formula, "
         "there are up to two mathematically correct answers. "
-        "This button will toggle which one is presented."
+        "This button will toggle which one is presented. "
         "$quadformAddendum");
   }
 }

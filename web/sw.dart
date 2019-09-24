@@ -1,6 +1,6 @@
 import 'package:service_worker/worker.dart' as w;
 
-const cacheName = "kn-cache-v7";
+const cacheName = "kn-cache-v7+";
 
 const cacheResources = [
   // page data
