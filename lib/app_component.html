@@ -18,15 +18,25 @@
     <h2>Formulas</h2>
 
     <ul>
-        <li aria-label="v equals v zero plus a t"><span aria-hidden="true">v = v<sub>0</sub> + at</span></li>
-        <li aria-label="delta x equals quantity v plus v zero divided by two times t"><span aria-hidden="true">&#x0394;x
+        <li aria-label="v equals v zero plus a t" [class.red]="(kinematics.calculating.first?.using ?? 0) == 1"
+            [class.blue]="(kinematics.calculating.last?.using ?? 0) == 1"><span aria-hidden="true">v = v<sub>0</sub> +
+                at</span></li>
+        <li aria-label="delta x equals quantity v plus v zero divided by two times t"
+            [class.red]="(kinematics.calculating.first?.using ?? 0) == 2"
+            [class.blue]="(kinematics.calculating.last?.using ?? 0) == 2"><span aria-hidden="true">&#x0394;x
                 = ((v + v<sub>0</sub>) / 2)t</span></li>
-        <li aria-label="delta x equals v zero t plus one half a t squared"><span aria-hidden="true">&#x0394;x =
+        <li aria-label="delta x equals v zero t plus one half a t squared"
+            [class.red]="(kinematics.calculating.first?.using ?? 0) == 3"
+            [class.blue]="(kinematics.calculating.last?.using ?? 0) == 3"><span aria-hidden="true">&#x0394;x =
                 v<sub>0</sub>t + (1/2)at<sup>2</sup></span></li>
-        <li aria-label="v squared equals v zero squared plus two A delta x"><span aria-hidden="true">v<sup>2</sup> =
+        <li aria-label="v squared equals v zero squared plus two A delta x"
+            [class.red]="(kinematics.calculating.first?.using ?? 0) == 4"
+            [class.blue]="(kinematics.calculating.last?.using ?? 0) == 4"><span aria-hidden="true">v<sup>2</sup> =
                 v<sub>0</sub><sup>2</sup> + 2a&#x0394;x</span>
         </li>
-        <li aria-label="delta x equals v t minus one half a t squared"><span aria-hidden="true">&#x0394;x = vt -
+        <li aria-label="delta x equals v t minus one half a t squared"
+            [class.red]="(kinematics.calculating.first?.using ?? 0) == 5"
+            [class.blue]="(kinematics.calculating.last?.using ?? 0) == 5"><span aria-hidden="true">&#x0394;x = vt -
                 (1/2)at<sup>2</sup></span></li>
     </ul>
 
