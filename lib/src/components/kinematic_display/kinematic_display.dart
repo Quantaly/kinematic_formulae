@@ -19,6 +19,9 @@ class KinematicDisplayComponent {
   bool get isTimeInterval => value.runtimeType == TimeInterval;
   bool get isAcceleration => value.runtimeType == ConstantAcceleration;
 
+  String get labelAddendum =>
+      value.using > 0 ? ", calculated using equation ${value.using}" : "";
+
   String get quadformAddendum => value.parent.needsQuadform
       ? "The current answer uses a "
           "${value.parent.quadformPlus ? "positive" : "negative"} square root."

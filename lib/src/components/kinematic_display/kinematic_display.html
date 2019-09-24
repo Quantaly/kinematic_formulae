@@ -1,11 +1,11 @@
 <div class="outermost">
     <div>
-        <span aria-hidden="true" [innerHtml]="value.name"></span>
-        <input type="checkbox" attr.aria-label="{{value.name}} is known" [(ngModel)]="value.input">
+        <span aria-hidden="true" [innerHtml]="value.name" [class.red]="value.parent.calculating.first == value"
+            [class.blue]="value.parent.calculating.last == value"></span>
+        <input type="checkbox" attr.aria-label="{{value.plaintextName}} is known" [(ngModel)]="value.input">
     </div>
     <div>
-        <input type="number" step="any" attr.aria-label="{{value.name}}" [disabled]="!value.input"
-            [(ngModel)]="safeValue">
+        <input type="number" step="any" attr.aria-label="{{value.plaintextName}}{{labelAddendum}}" [disabled]="!value.input" [(ngModel)]="safeValue">
     </div>
     <div>
         <button *ngIf="isTimeInterval" [disabled]="!value.parent.needsQuadform"

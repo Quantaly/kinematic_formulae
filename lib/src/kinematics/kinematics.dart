@@ -39,13 +39,15 @@ class Kinematics {
         if (constantAcceleration.input) constantAcceleration,
       ];
 
-  List<KinematicValue> get calculating => [
-        if (!displacement.input) displacement,
-        if (!timeInterval.input) timeInterval,
-        if (!initialVelocity.input) initialVelocity,
-        if (!finalVelocity.input) finalVelocity,
-        if (!constantAcceleration.input) constantAcceleration,
-      ];
+  List<KinematicValue> get calculating => numInputs == 3
+      ? [
+          if (!displacement.input) displacement,
+          if (!timeInterval.input) timeInterval,
+          if (!initialVelocity.input) initialVelocity,
+          if (!finalVelocity.input) finalVelocity,
+          if (!constantAcceleration.input) constantAcceleration,
+        ]
+      : [null, null];
 
   int get numInputs => inputs.length;
 }

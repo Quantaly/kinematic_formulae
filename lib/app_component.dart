@@ -13,7 +13,7 @@ import 'src/services/pwa_prompt_service.dart';
   styleUrls: ['app_component.css'],
   templateUrl: 'app_component.html',
   directives: [coreDirectives, KinematicDisplayComponent, PwaPrompt],
-  providers: [ClassProvider(PwaPromptService)]
+  providers: [ClassProvider(PwaPromptService)],
 )
 class AppComponent {
   final kinematics = Kinematics();
