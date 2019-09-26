@@ -8,28 +8,21 @@ class Kinematics {
   ConstantAcceleration _constantAcceleration;
 
   Displacement get displacement => _displacement ??= Displacement._(this);
-  double get dx => displacement.value;
+  double get dx => displacement._value;
 
   TimeInterval get timeInterval => _timeInterval ??= TimeInterval._(this);
-  double get t => timeInterval.value;
+  double get t => timeInterval._value;
 
   InitialVelocity get initialVelocity =>
       _initialVelocity ??= InitialVelocity._(this);
-  double get v0 => initialVelocity.value;
+  double get v0 => initialVelocity._value;
 
   FinalVelocity get finalVelocity => _finalVelocity ??= FinalVelocity._(this);
-  double get v => finalVelocity.value;
+  double get v => finalVelocity._value;
 
   ConstantAcceleration get constantAcceleration =>
       _constantAcceleration ??= ConstantAcceleration._(this);
-  double get a => constantAcceleration.value;
-
-  bool quadformPlus = false;
-  bool get needsQuadform =>
-      displacement.input &&
-      !timeInterval.input &&
-      (initialVelocity.input != finalVelocity.input) &&
-      constantAcceleration.input;
+  double get a => constantAcceleration._value;
 
   List<KinematicValue> get inputs => [
         if (displacement.input) displacement,
@@ -64,13 +57,15 @@ abstract class KinematicValue {
 
   double _value = 0;
   set value(double newValue) => _value = newValue;
-  double get value {
-    if (input) return _value;
-    if (parent.numInputs != 3) return double.nan;
+  List<double> get values {
+    if (input) return [_value];
+    if (parent.numInputs != 3) return [];
     try {
-      return _calculate().value();
+      return _calculate().values().map((n) => n == n ? n : null).toList();
     } on NoSuchMethodError {
-      return double.nan;
+      return [];
+    } on NegativeSqrt {
+      return [null, null];
     }
   }
 
@@ -96,9 +91,9 @@ abstract class KinematicValue {
 }
 
 class CalcResult {
-  final double Function() value;
+  final List<double> Function() values;
   final int using;
-  CalcResult(this.value, this.using);
+  CalcResult(this.values, this.using);
 }
 
 /*
@@ -145,11 +140,9 @@ class TimeInterval extends KinematicValue {
     if (!parent.displacement.input) {
       return CalcResult(() => tFrom1(v, v0, a), 1);
     } else if (!parent.initialVelocity.input) {
-      return CalcResult(
-          () => tFrom5(dx, v, a, quadformPlus: parent.quadformPlus), 5);
+      return CalcResult(() => tFrom5(dx, v, a), 5);
     } else if (!parent.finalVelocity.input) {
-      return CalcResult(
-          () => tFrom3(dx, v0, a, quadformPlus: parent.quadformPlus), 3);
+      return CalcResult(() => tFrom3(dx, v0, a), 3);
     } else if (!parent.constantAcceleration.input) {
       return CalcResult(() => tFrom2(dx, v, v0), 2);
     }
