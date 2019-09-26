@@ -43,6 +43,12 @@ class Kinematics {
       : [null, null];
 
   int get numInputs => inputs.length;
+
+  // displacement and acceleration can never have multiple answers
+  bool get multipleAnswers =>
+      timeInterval.values.length > 1 ||
+      initialVelocity.values.length > 1 ||
+      finalVelocity.values.length > 1;
 }
 
 final nameRegex = RegExp("(.*) \\(.*\\)");
