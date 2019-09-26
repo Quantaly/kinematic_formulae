@@ -5,14 +5,13 @@
         <input type="checkbox" attr.aria-label="{{value.plaintextName}} is known" [(ngModel)]="value.input">
     </div>
     <div>
-        <input type="number" step="any" attr.aria-label="{{value.plaintextName}}{{labelAddendum}}"
-            [disabled]="!value.input" [(ngModel)]="safeValue">
-    </div>
-    <div>
-        <template [ngIf]="isTimeInterval">
-            <button [disabled]="!value.parent.needsQuadform"
-                (click)="value.parent.quadformPlus = !value.parent.quadformPlus">Toggle Quadratic Formula</button>
-            <button aria-label="Hint for Toggle Quadratic Formula button" (click)="quadformHint()">?</button>
+        <template [ngIf]="value.input">
+            <input type="number" step="any" value="0" attr.aria-label="{{value.plaintextName}}"
+                 (input)="setValue($event)">
+        </template>
+        <template [ngIf]="!value.input">
+            <input *ngFor="let val of value.values; let i=index" type="number" step="any" disabled attr.aria-label="{{value.plaintextName}}{{labelAddendum(i)}}"
+                [value]="val.toString()">
         </template>
     </div>
 </div>
