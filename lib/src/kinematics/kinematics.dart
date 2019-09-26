@@ -59,11 +59,11 @@ abstract class KinematicValue {
   set value(double newValue) => _value = newValue;
   List<double> get values {
     if (input) return [_value];
-    if (parent.numInputs != 3) return [];
+    if (parent.numInputs != 3) return [null];
     try {
       return _calculate().values().map((n) => n == n ? n : null).toList();
     } on NoSuchMethodError {
-      return [];
+      return [null];
     } on NegativeSqrt {
       return [null, null];
     }
