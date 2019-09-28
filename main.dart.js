@@ -1927,8 +1927,13 @@ d_:function d_(){},
 cZ:function(a){var u=Math.sqrt(a)
 if(u!==u)throw H.b(new G.dt())
 return u},
-nx:function(a,b,c){var u=-b,t=b*b-4*a*c,s=2*a
-return H.q([(u-G.cZ(t))/s,(u+G.cZ(t))/s],[P.I])},
+nx:function(a,b,c){var u,t,s
+if(a!==0){u=-b
+t=b*b-4*a*c
+s=2*a
+return H.q([(u-G.cZ(t))/s,(u+G.cZ(t))/s],[P.I])}else{u=[P.I]
+if(b!==0)return H.q([-c/b],u)
+else return H.q([null],u)}},
 dt:function dt(){}},Y={
 nr:function(a){return new Y.k8(a)},
 k8:function k8(a){var _=this
