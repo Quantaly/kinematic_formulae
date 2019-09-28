@@ -2,7 +2,7 @@ import 'package:service_worker/worker.dart' as w;
 
 const cacheName = "kn-cache-v8+";
 
-const cacheResources = [
+const cacheGeneralResources = [
   // page data
   ".",
   "index.html",
@@ -15,8 +15,9 @@ const cacheResources = [
   "icons/pwa-icon-192.png",
   "icons/pwa-icon-512.png",
   "icons/pwa-icon-ios.png",
+];
 
-  // fonts
+const cacheFontSheets = [
   "https://fonts.googleapis.com/css?family=Arimo&display=fallback",
 ];
 
@@ -29,17 +30,20 @@ void main() {
     evt.waitUntil(() async {
       try {
         var cache = await w.caches.open(cacheName);
-        await cache.addAll(cacheResources);
 
-        // precache WOFFs
-        var fontCss = await (await cache.match(
-                "https://fonts.googleapis.com/css?family=Arimo&display=fallback"))
-            .text();
-        var fontWoffs =
-            woffUrl.allMatches(fontCss).map((m) => m.group(0)).toSet();
-        for (var woff in fontWoffs) {
-          await cache.add(woff);
-        }
+        await Future.wait([
+          cache
+              .addAll(cacheGeneralResources)
+              .then((_) => print("general resources")),
+          for (var fontSheet in cacheFontSheets)
+            cache.add(fontSheet).then((_) async {
+              var sheetBody = await (await cache.match(fontSheet)).text();
+              var fontWoffs =
+                  woffUrl.allMatches(sheetBody).map((m) => m.group(0)).toList();
+              await cache.addAll(fontWoffs);
+              print("fonts");
+            })
+        ]);
 
         print("Finished caching resources");
       } on Error catch (e) {
