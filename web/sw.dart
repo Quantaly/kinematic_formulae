@@ -32,16 +32,13 @@ void main() {
         var cache = await w.caches.open(cacheName);
 
         await Future.wait([
-          cache
-              .addAll(cacheGeneralResources)
-              .then((_) => print("general resources")),
+          cache.addAll(cacheGeneralResources),
           for (var fontSheet in cacheFontSheets)
             cache.add(fontSheet).then((_) async {
               var sheetBody = await (await cache.match(fontSheet)).text();
               var fontWoffs =
                   woffUrl.allMatches(sheetBody).map((m) => m.group(0)).toList();
               await cache.addAll(fontWoffs);
-              print("fonts");
             })
         ]);
 

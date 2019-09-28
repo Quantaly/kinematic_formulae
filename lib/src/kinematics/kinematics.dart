@@ -69,10 +69,8 @@ abstract class KinematicValue {
     try {
       return _calculate().values().map((n) => n == n ? n : null).toList();
     } on NoSuchMethodError {
-      print("got NoSuchMethodError");
       return [null];
     } on NegativeSqrt {
-      print("got NegativeSqrt");
       return [null, null];
     }
   }
@@ -150,12 +148,7 @@ class TimeInterval extends KinematicValue {
     } else if (!parent.initialVelocity.input) {
       return CalcResult(() => tFrom5(dx, v, a), 5);
     } else if (!parent.finalVelocity.input) {
-      print("using right equation");
-      return CalcResult(() {
-        var ret = tFrom3(dx, v0, a);
-        print("ret is $ret");
-        return ret;
-      }, 3);
+      return CalcResult(() => tFrom3(dx, v0, a), 3);
     } else if (!parent.constantAcceleration.input) {
       return CalcResult(() => tFrom2(dx, v, v0), 2);
     }
