@@ -22,10 +22,21 @@ double safeSqrt(double n) {
   return ret;
 }
 
-List<double> quadform(double a, double b, double c) => [
+List<double> quadform(double a, double b, double c) {
+  if (a != 0) {
+    // 0 = a^2x + bx + c
+    return [
       (-b - safeSqrt(b * b - 4 * a * c)) / (2 * a),
       (-b + safeSqrt(b * b - 4 * a * c)) / (2 * a)
     ];
+  } else if (b != 0) {
+    // 0 = bx + c
+    return [-c / b];
+  } else {
+    // 0 = c
+    return [null];
+  }
+}
 
 List<double> sqrts(double n) => [-safeSqrt(n), safeSqrt(n)];
 
