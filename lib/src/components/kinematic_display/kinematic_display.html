@@ -2,16 +2,17 @@
     <div>
         <span aria-hidden="true" [innerHtml]="value.name" [class.red]="value.parent.calculating.first == value"
             [class.blue]="value.parent.calculating.last == value"></span>
-        <input type="checkbox" attr.aria-label="{{value.plaintextName}} is known" [(ngModel)]="value.input">
+        <input type="checkbox" attr.aria-label="{{value.plaintextName}} is known" [checked]="value.input"
+            (input)="setInput($event)">
     </div>
     <div>
         <template [ngIf]="value.input">
             <input type="number" step="any" value="0" attr.aria-label="{{value.plaintextName}}"
-                 (input)="setValue($event)">
+                (input)="setValue($event)">
         </template>
         <template [ngIf]="!value.input">
-            <input *ngFor="let val of value.values; let i=index" type="number" step="any" disabled attr.aria-label="{{value.plaintextName}}{{labelAddendum(i)}}"
-                [value]="val.toString()">
+            <input *ngFor="let val of value.values; let i=index" type="number" step="any" disabled
+                attr.aria-label="{{value.plaintextName}}{{labelAddendum(i)}}" [value]="val.toString()">
         </template>
     </div>
 </div>
