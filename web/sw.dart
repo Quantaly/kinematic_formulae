@@ -1,31 +1,31 @@
 import 'package:service_worker/worker.dart' as w;
 
-const cacheName = "kn-cache-v9";
+const cacheName = 'kn-cache-v10';
 
 const cacheGeneralResources = [
   // page data
-  ".",
-  "index.html",
-  "styles.css",
-  "main.dart.js",
-  "manifest.json",
+  '.',
+  'index.html',
+  'styles.css',
+  'main.dart.js',
+  'manifest.json',
 
   // icons
-  "icons/favicon.png",
-  "icons/pwa-icon-192.png",
-  "icons/pwa-icon-512.png",
-  "icons/pwa-icon-ios.png",
+  'icons/favicon.png',
+  'icons/pwa-icon-192.png',
+  'icons/pwa-icon-512.png',
+  'icons/pwa-icon-ios.png',
 ];
 
 const cacheFontSheets = [
-  "https://fonts.googleapis.com/css?family=Arimo&display=fallback",
+  'https://fonts.googleapis.com/css?family=Arimo&display=fallback',
 ];
 
-final woffUrl = RegExp("https://.*\\.woff2?");
+final woffUrl = RegExp('https://.*\\.woff2?');
 
 void main() {
   w.onInstall.listen((evt) async {
-    //print("ServiceWorker installed");
+    //print('ServiceWorker installed');
 
     evt.waitUntil(() async {
       try {
@@ -42,16 +42,16 @@ void main() {
             })
         ]);
 
-        print("Finished caching resources");
+        print('Finished caching resources');
       } on Error catch (e) {
-        print("big oof on the servizzle workizzle: $e");
+        print('big oof on the servizzle workizzle: $e');
         rethrow;
       }
     }());
   });
 
   w.onActivate.listen((evt) {
-    //print("ServiceWorker activated");
+    //print('ServiceWorker activated');
 
     evt.waitUntil(() async {
       var futures = <Future>[];
@@ -67,7 +67,7 @@ void main() {
   w.onFetch.listen((evt) {
     evt.respondWith(w.caches.match(evt.request).then((res) {
       //print(evt.request.url);
-      //print("res is $res");
+      //print('res is $res');
       return res ?? w.fetch(evt.request);
     }));
   });

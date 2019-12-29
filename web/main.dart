@@ -5,9 +5,9 @@ import 'package:service_worker/window.dart' as sw;
 
 void main() {
   if (sw.isSupported) {
-    sw.register("sw.dart.js");
+    sw.register('sw.dart.js');
   } else {
-    print("big oof on the servizzle workizzle");
+    print('big oof on the servizzle workizzle');
   }
   runApp(ng.AppComponentNgFactory);
 }

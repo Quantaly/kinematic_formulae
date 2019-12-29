@@ -46,12 +46,12 @@ class Kinematics {
 
   // displacement and acceleration can never have multiple answers
   bool get multipleAnswers =>
-      timeInterval.values.length > 1 ||
-      initialVelocity.values.length > 1 ||
-      finalVelocity.values.length > 1;
+      timeInterval.calculatedValues.length > 1 ||
+      initialVelocity.calculatedValues.length > 1 ||
+      finalVelocity.calculatedValues.length > 1;
 }
 
-final nameRegex = RegExp("(.*) \\(.*\\)");
+final nameRegex = RegExp('(.*) \\(.*\\)');
 
 abstract class KinematicValue {
   final Kinematics parent;
@@ -62,8 +62,9 @@ abstract class KinematicValue {
   bool input = false;
 
   double _value = 0;
+  double get value => _value;
   set value(double newValue) => _value = newValue;
-  List<double> get values {
+  List<double> get calculatedValues {
     if (input) return [_value];
     if (parent.numInputs != 3) return [null];
     try {
@@ -118,7 +119,7 @@ class Displacement extends KinematicValue {
   Displacement._(Kinematics parent) : super._(parent);
 
   @override
-  final name = "Displacement (Δx)";
+  final name = 'Displacement (Δx)';
 
   @override
   CalcResult _calculate() {
@@ -139,7 +140,7 @@ class TimeInterval extends KinematicValue {
   TimeInterval._(Kinematics parent) : super._(parent);
 
   @override
-  final name = "Time Interval (t)";
+  final name = 'Time Interval (t)';
 
   @override
   CalcResult _calculate() {
@@ -160,9 +161,9 @@ class InitialVelocity extends KinematicValue {
   InitialVelocity._(Kinematics parent) : super._(parent);
 
   @override
-  final name = "Initial Velocity (v<sub>0</sub>)";
+  final name = 'Initial Velocity (v<sub>0</sub>)';
   @override
-  final plaintextName = "Initial Velocity (v0)";
+  final plaintextName = 'Initial Velocity (v0)';
 
   @override
   CalcResult _calculate() {
@@ -183,7 +184,7 @@ class FinalVelocity extends KinematicValue {
   FinalVelocity._(Kinematics parent) : super._(parent);
 
   @override
-  final name = "Final Velocity (v)";
+  final name = 'Final Velocity (v)';
 
   @override
   CalcResult _calculate() {
@@ -204,7 +205,7 @@ class ConstantAcceleration extends KinematicValue {
   ConstantAcceleration._(Kinematics parent) : super._(parent);
 
   @override
-  final name = "Acceleration (a)";
+  final name = 'Acceleration (a)';
 
   @override
   CalcResult _calculate() {

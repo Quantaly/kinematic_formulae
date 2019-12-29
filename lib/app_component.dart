@@ -21,11 +21,11 @@ class AppComponent {
   final kinematics = Kinematics();
 
   void multipleAnswersHint() {
-    window.alert("In certain formulas, time or velocity is squared. "
-        "This means that calculating them requires a square root, "
-        "which can be positive or negative.\n\n"
-        "Both answers are mathematically correct (and may be identical), "
-        "but might not apply to the specific problem. "
-        "Ensure your answer(s) make sense in context!");
+    window.alert('In certain formulas, time or velocity is squared. '
+        'This means that calculating them requires a square root, '
+        'which can be positive or negative.\n\n'
+        'Both answers are mathematically correct (and may be identical), '
+        'but might not apply to the specific problem. '
+        'Ensure your answer(s) make sense in context!');
   }
 }
