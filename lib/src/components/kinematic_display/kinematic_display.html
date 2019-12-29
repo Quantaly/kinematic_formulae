@@ -11,7 +11,7 @@
                 (input)="setValue($event)">
         </template>
         <template [ngIf]="!value.input">
-            <input *ngFor="let val of value.values; let i=index" type="number" step="any" disabled
+            <input *ngFor="let val of value.calculatedValues; let i=index" type="number" step="any" disabled
                 attr.aria-label="{{value.plaintextName}}{{labelAddendum(i)}}" [value]="val.toString()">
         </template>
     </div>

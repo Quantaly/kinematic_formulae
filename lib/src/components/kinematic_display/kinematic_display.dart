@@ -5,9 +5,9 @@ import 'package:angular/angular.dart';
 import '../../kinematics/kinematics.dart';
 
 @Component(
-  selector: "kn-display",
-  templateUrl: "kinematic_display.html",
-  styleUrls: ["kinematic_display.css"],
+  selector: 'kn-display',
+  templateUrl: 'kinematic_display.html',
+  styleUrls: ['kinematic_display.css'],
   directives: [coreDirectives],
 )
 class KinematicDisplayComponent {
@@ -22,11 +22,11 @@ class KinematicDisplayComponent {
 
   String labelAddendum(int index) {
     var ret = StringBuffer();
-    if (value.values.length > 1) {
-      ret.write(", result ${index + 1} of ${value.values.length}");
+    if (value.calculatedValues.length > 1) {
+      ret.write(', result ${index + 1} of ${value.calculatedValues.length}');
     }
     if (value.using > 0) {
-      ret.write(", calculated using equation ${value.using}");
+      ret.write(', calculated using equation ${value.using}');
     }
     return ret.toString();
   }
@@ -37,6 +37,7 @@ class KinematicDisplayComponent {
   }
 
   void setValue(Event event) {
-    value.value = double.tryParse((event.target as NumberInputElement).value) ?? 0;
+    value.value =
+        double.tryParse((event.target as NumberInputElement).value) ?? 0;
   }
 }

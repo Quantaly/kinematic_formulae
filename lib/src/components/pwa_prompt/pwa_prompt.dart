@@ -6,9 +6,9 @@ import 'package:angular/angular.dart';
 import '../../services/pwa_prompt_service.dart';
 
 @Component(
-  selector: "kn-pwa-prompt",
-  templateUrl: "pwa_prompt.html",
-  styleUrls: ["pwa_prompt.css"],
+  selector: 'kn-pwa-prompt',
+  templateUrl: 'pwa_prompt.html',
+  styleUrls: ['pwa_prompt.css'],
   directives: [coreDirectives],
 )
 class PwaPrompt implements OnInit, OnDestroy {
