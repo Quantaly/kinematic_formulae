@@ -1,6 +1,6 @@
 import 'package:service_worker/worker.dart' as w;
 
-const cacheName = 'kn-cache-v10';
+const cacheName = 'kn-cache-v11';
 
 const cacheGeneralResources = [
   // page data
@@ -41,8 +41,6 @@ void main() {
               await cache.addAll(fontWoffs);
             })
         ]);
-
-        print('Finished caching resources');
       } on Error catch (e) {
         print('big oof on the servizzle workizzle: $e');
         rethrow;
@@ -51,12 +49,10 @@ void main() {
   });
 
   w.onActivate.listen((evt) {
-    //print('ServiceWorker activated');
-
     evt.waitUntil(() async {
       var futures = <Future>[];
       for (var cache in await w.caches.keys()) {
-        if (cache != cacheName) {
+        if (cache.startsWith('kn') && cache != cacheName) {
           futures.add(w.caches.delete(cache));
         }
       }
@@ -66,8 +62,6 @@ void main() {
 
   w.onFetch.listen((evt) {
     evt.respondWith(w.caches.match(evt.request).then((res) {
-      //print(evt.request.url);
-      //print('res is $res');
       return res ?? w.fetch(evt.request);
     }));
   });
