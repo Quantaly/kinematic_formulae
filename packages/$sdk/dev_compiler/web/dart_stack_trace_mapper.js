@@ -2331,15 +2331,16 @@ if(!!a.fixed$length)H.u(P.v("insert"))
 u=a.length
 if(b>u)throw H.a(P.aA(b,null))
 a.splice(b,0,c)},
-b3:function(a,b,c){var u,t
+b3:function(a,b,c){var u,t,s
 H.H(c,"$io",[H.h(a,0)],"$ao")
 if(!!a.fixed$length)H.u(P.v("insertAll"))
-P.fn(b,0,a.length,"index")
-u=c.length
-this.sm(a,a.length+u)
-t=b+u
-this.bf(a,t,a.length,a,b)
-this.bM(a,b,t,c)},
+u=a.length
+P.fn(b,0,u,"index")
+t=c.length
+this.sm(a,u+t)
+s=b+t
+this.bf(a,s,a.length,a,b)
+this.bM(a,b,s,c)},
 a7:function(a){if(!!a.fixed$length)H.u(P.v("removeLast"))
 if(a.length===0)throw H.a(H.a8(a,-1))
 return a.pop()},
